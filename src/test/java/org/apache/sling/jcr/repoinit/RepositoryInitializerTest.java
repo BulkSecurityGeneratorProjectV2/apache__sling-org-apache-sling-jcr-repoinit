@@ -22,6 +22,7 @@ import static org.junit.Assert.fail;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -162,7 +163,7 @@ public class RepositoryInitializerTest {
 
     /** Return the URL of a temporary file that contains repoInitText */
     private String getTestUrl(String repoInitText) throws IOException {
-        final File tmpFile = File.createTempFile(getClass().getSimpleName(), "txt");
+        final File tmpFile = Files.createTempFile(getClass().getSimpleName(), "txt").toFile();
         tmpFile.deleteOnExit();
         final FileWriter w = new FileWriter(tmpFile);
         w.write(repoInitText);
